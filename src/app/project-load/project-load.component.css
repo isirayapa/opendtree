@@ -1,0 +1,81 @@
+/*@import url('https://fonts.googleapis.com/css?family=Raleway');
+@import url('https://fonts.googleapis.com/css?family=Oswald');
+
+html, body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	width: 100%;  
+}
+/*.container-full {
+  margin: 0 auto;
+  width: 100%;
+}*/
+
+.test {
+	height: 100%;
+	width: 100%;
+	margin: auto;
+	background: url(../../assets/bg.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	min-height: 100%;
+	min-width: 100%; 
+}
+
+.heading h1 {
+	font-family: 'Raleway', sans-serif;
+	color: #FFFFFF;
+}
+
+.new a {
+	position: absolute;
+	left: 39%;
+	top: 50%;
+	/*width: 12.5%;*/
+	font-family: 'Raleway', sans-serif;
+	color: gray;
+	text-shadow: 0px 0px 300px 300px #000;
+	font-size: 220%;
+}
+
+.old a {
+	position: absolute;
+	left:42.2%;
+	top: 64%;
+	width: 15.5%;
+	font-family: 'Raleway', sans-serif;
+	color: gray;
+	text-shadow: 0px 0px 300px 300px #000;
+	font-size: 220%;
+}
+
+.new .nbtn {
+	border-radius: 9px;
+	font-family: 'Oswald', sans-serif;
+	color: #FFFFFF;
+	padding: 10px 20px;
+	border: solid gray 3px;
+	text-transform: uppercase;
+	text-decoration: none;
+}
+
+.new .nbtn:hover {
+	color: #33FFE9;
+	border: solid #33FFE9;
+}
+
+.old .obtn {
+	border-radius: 9px;
+	font-family: 'Oswald', sans-serif;
+	color: gray;
+	padding: 10px 20px;
+	border: solid grayF 3px;
+	text-transform: uppercase;
+	text-decoration: none;
+}
+
+.old .obtn:hover {
+	color: #33FFE9;
+	border: solid #33FFE9;
+}

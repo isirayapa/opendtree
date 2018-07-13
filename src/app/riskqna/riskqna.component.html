@@ -1,182 +1,148 @@
-<!-- Heading -->
-      <div class="card my-2">
-        <div class="card-header card-block">
-          <div class=" row">
-            <label class="col-2">N/A</label>
-            <div class="col-6 text-center">
-              Question
+<div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                            <div class="row form-group">
+                                <div class="col col-md-7">
+                                    <label class=" form-control-label"><strong>Question</strong></label>
+                                </div>
+                                <div class="col-15 col-md-3">
+                                    <p class="form-control-static"><strong>Impact</strong></p>
+                                </div>
+                                <div class="col-18 col-md-2">
+                                    <p class="form-control-static"><strong>Risk</strong></p>
+                                </div>
+                            </div>
+                    </div>
+                    <div class="card-body card-block">
+                        <!-- <form #box (keyup)="onKey(box.value) method="post" enctype="multipart/form-data" class="form-horizontal" id="page1form"> -->
+                        <form [formGroup]="questionForm" (ngSubmit)="onSubmit()">
+                            <!-- summery of inventions -->
+                            <div class="row form-group">
+                                <div class="col col-md-3">
+                                    <label for="textarea-input" class=" form-control-label"><strong>1. Summary of Invention</strong></label>
+                                </div>
+                                <div class="col-12 col-md-9">
+                                    <textarea name="textarea-input" id="textarea-input" rows="4" placeholder="description..." class="form-control"></textarea>
+                                </div>
+                            </div>
+                            <!-- table 1 -->
+                            <div class="row form-group">
+                                <div class="col col-lg-12">
+                                    <div class="row">
+                                        <div class="col-lg-10">
+                                            <div class="table-responsive table--no-card m b-30">
+                                                <table class="table table-borderless table-striped table-earning">
+                                                    <thead>
+                                                        <tr>
+                                                            <th></th>
+                                                            <th>Better yields on existing functionalities</th>
+                                                            <th>New functionalities </th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td><strong>Builds on existing technical approaches</strong></td>
+                                                            <td>Incremental Innovation </td>
+                                                            <td>Adoptive Innovation </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><strong>New Technical Approaches</strong></td>
+                                                            <td>Radical Innovations </td>
+                                                            <td>Disruptive Innovations </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>    
+                                <br>
+                                <p style="text-align: center;">Table 1</p>
+                                <br>
+                            </div>
+
+                            <p><strong>2. Product/Process</strong></p>
+
+                            <fieldset *ngFor="let q of Questions">
+
+
+                                <div class="row form-group" [formGroupName]=q.id >
+
+                                    <div class="col-1 col-md-3">
+                                        <label class=" form-control-label">Select if N/A</label>
+                                    </div>
+
+                                    <div class="col-4 col-md-9">
+                                        <div class="form-check-inline form-check">
+                                            <label for="inline-checkbox1" class="form-check-label ">
+                                                <input type="checkbox" name="inline-checkbox1" value=false class="form-check-input" formControlName="applicability">
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col col-md-7">
+                                        <label for="selectSm" class=" form-control-label"><strong>{{q.name}}</strong></label>
+                                    </div>
+                                    <div class="col- col-md-2">
+                                        <select name="selectSm" id="SelectLm" formControlName="risk" class="form-control-sm form-control">
+                                            <option value="Low">Low</option>
+                                            <option value="Medium">Medium</option>
+                                            <option value="High">High</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="col- col-md-2">
+                                        <select name="selectSm" id="SelectLm" formControlName="impact" class="form-control-sm form-control">
+                                            <option value="0">0</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                            <option value="9">9</option>
+                                            <option value="10">10</option>
+                                        </select>
+                                        <br>
+                                    </div>
+
+                                    <div class="col- col-md-12">
+                                        <input type="form-control" formControlName="description" class="form-control" placeholder="description...">
+                                        <!-- <textarea name="textarea-input" id="textarea-input" rows="1" placeholder="description..." class="form-control"></textarea> -->
+                                        <br>
+                                    </div>
+
+                                    
+
+                                </div>
+
+
+                            </fieldset>
+
+                            <button type="submit" class="btn btn-primary btn-sm" value="submit">
+                                    <i class="fa fa-dot-circle-o"></i> Submit
+                            </button>
+
+                            <button type="reset" class="btn btn-danger btn-sm">
+                                <i class="fa fa-ban"></i> Reset
+                            </button>
+
+                           
+
+                        </form>
+                        
+                    </div>
+                    
+                </div>
             </div>
-            <div class="col-2 text-center">Impact</div>
-            <div class="col-2 text-center">Risk</div>
-          </div>
         </div>
-      </div>
+    </div>
 
-      <!-- 1st Question -->
-      <div class="card">
-        <div class="card-header card-block">1.
-          <div class="card-body row">
-            <!-- checkbox -->
-            <div class="field">
-              <input class="is-checkradio has-background-color is-danger" id="exampleCheckboxBackgroundColorDanger" type="checkbox" name="exampleCheckboxBackgroundColorDanger" checked="checked">
-              <label for="exampleCheckboxBackgroundColorDanger">Checkbox - danger</label>
-            </div>
-            <!-- /checkbox -->
-            <div class="col-7">
-              How likely is it to achieve TRL level 3 (Critical function or proof of concept established) at end of research?
-            </div>
-            <select class="selectpicker col-2 show-tick">
-			         <option>High</option>
-			         <option>Medium</option>
-			         <option>Low</option>
-			      </select>
-            <div class="col-2 text-center">5
-            	<br>
-            	<div class="slidecontainer">
-				  <input type="range" min="1" max="10" value=50 class="slider" id="riskQty">
-				</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- 2nd Question -->
-      <div class="card">
-        <div class="card-header card-block">2.
-          <div class="card-body row">
-            <div class="col-8">
-              How likely is it to achieve TRL level 4 (Technology validated in lab/validation of alpha prototype component/ process) at end of research?
-            </div>
-            <select class="selectpicker col-2 show-tick">
-			  <option>High</option>
-			  <option>Medium</option>
-			  <option>Low</option>
-			</select>
-            <div class="col-2 text-center">5
-            	<br>
-            	<div class="slidecontainer">
-				  <input type="range" min="1" max="10" value="50" class="slider" id="myRange">
-				</div>
-            </div>
-        	
-          </div>
-        </div>
-      </div>
-
-      <!-- 3rd Question -->
-      <div class="card">
-        <div class="card-header card-block">3.
-          <div class="card-body row">
-            <div class="col-8">
-              How likely is it to achieve TRL level 5 (Laboratory Testing of Integrated/Semi-Integrated System) at end of research?
-            </div>
-            <select class="selectpicker col-2 show-tick">
-			  <option>High</option>
-			  <option>Medium</option>
-			  <option>Low</option>
-			</select>
-            <div class="col-2 text-center">5
-            	<br>
-            	<div class="slidecontainer">
-				  <input type="range" min="1" max="10" value="50" class="slider" id="myRange">
-				</div>
-            </div>
-
-          </div>
-        </div>
-      </div>
-
-      <!-- 3rd Question -->
-      <div class="card">
-        <div class="card-header card-block">3.
-          <div class="card-body row">
-            <div class="col-8">
-              How likely is it to achieve TRL level 5 (Laboratory Testing of Integrated/Semi-Integrated System) at end of research?
-            </div>
-            <select class="selectpicker col-2 show-tick">
-        <option>High</option>
-        <option>Medium</option>
-        <option>Low</option>
-      </select>
-            <div class="col-2 text-center">5
-              <br>
-              <div class="slidecontainer">
-          <input type="range" min="1" max="10" value="50" class="slider" id="myRange">
-        </div>
-            </div>
-
-          </div>
-        </div>
-      </div>
-
-
-      <!-- 3rd Question -->
-      <div class="card">
-        <div class="card-header card-block">3.
-          <div class="card-body row">
-            <div class="col-8">
-              How likely is it to achieve TRL level 5 (Laboratory Testing of Integrated/Semi-Integrated System) at end of research?
-            </div>
-            <select class="selectpicker col-2 show-tick">
-        <option>High</option>
-        <option>Medium</option>
-        <option>Low</option>
-      </select>
-            <div class="col-2 text-center">5
-              <br>
-              <div class="slidecontainer">
-          <input type="range" min="1" max="10" value="50" class="slider" id="myRange">
-        </div>
-            </div>
-
-          </div>
-        </div>
-      </div>
-
-
-      <!-- 3rd Question -->
-      <div class="card">
-        <div class="card-header card-block">3.
-          <div class="card-body row">
-            <div class="col-8">
-              How likely is it to achieve TRL level 5 (Laboratory Testing of Integrated/Semi-Integrated System) at end of research?
-            </div>
-            <select class="selectpicker col-2 show-tick">
-        <option>High</option>
-        <option>Medium</option>
-        <option>Low</option>
-      </select>
-            <div class="col-2 text-center">5
-              <br>
-              <div class="slidecontainer">
-          <input type="range" min="1" max="10" value="50" class="slider" id="myRange">
-        </div>
-            </div>
-
-          </div>
-        </div>
-      </div>
-
-
-      <!-- 3rd Question -->
-      <div class="card">
-        <div class="card-header card-block">3.
-          <div class="card-body row">
-            <div class="col-8">
-              How likely is it to achieve TRL level 5 (Laboratory Testing of Integrated/Semi-Integrated System) at end of research?
-            </div>
-            <select class="selectpicker col-2 show-tick">
-        <option>High</option>
-        <option>Medium</option>
-        <option>Low</option>
-      </select>
-            <div class="col-2 text-center">5
-              <br>
-              <div class="slidecontainer">
-          <input type="range" min="1" max="10" value="50" class="slider" id="myRange">
-        </div>
-            </div>
-
-          </div>
-        </div>
-      </div>
+    <pre>{{questionForm.value | json}}</pre>
