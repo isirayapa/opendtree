@@ -1,4 +1,4 @@
-export class Project{
+export interface Project{
 	id:number;
 	name: string;
 	description:string;
@@ -7,19 +7,19 @@ export class Project{
 
 }
 
-export class TeamMember{
+export interface TeamMember{
 	name:string;
 	projectNames:string[];
 
 }
-export class QuestionName{
+export interface QuestionName{
 	id:number;
 	section:number;
 	name:string;
 }
 
 
-export class Question{
+export interface Question{
 	id: string;
 	applicability: number;
 	risk: string;

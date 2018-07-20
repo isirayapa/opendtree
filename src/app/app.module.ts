@@ -13,7 +13,11 @@ import { InfoComponent } from './info/info.component';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule  } from 'angularfire2/database';
+
+import { HttpClientModule } from '@angular/common/http';
+
 import { environment } from '../environments/environment';
+
 
 
 const appRoutes: Routes = [
@@ -32,6 +36,7 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AngularFireModule.initializeApp(environment.firebase, 'fcc-book-trading'),
     AngularFireDatabaseModule,
     NgbModule.forRoot(),
