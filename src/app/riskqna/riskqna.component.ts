@@ -20,36 +20,22 @@ export class RiskqnaComponent implements OnInit {
 	mainobj:FormGroup;
 	Questions=QUESTIONS;
 	QuestionsArray: FormGroup[];
-	qTest:Question;
-	q:Question;
-	qs:Question[];
-
 	
-	question: Observable<Question[]>;
+	BASE_URL:String = 'http://localhost:8080';
 
 	constructor(private http: HttpClient){
-		// this.questionCollection = db.collection<Question>('questions');
-		// this.question = this.questionCollection.valueChanges();
-		
-
-		// db.collection("/questions").doc("one").set(this.questionForm.getRawValue()).then(function() {
-	 //    console.log("Document successfully written!");
-		// });
-
 		}
+
 
 	ngOnInit(){
 
-		
-		  
-		
 
 		this.questionForm = new FormGroup({
 			'2': new FormGroup({
 				description: new FormControl(),
 				risk: new FormControl(),
 				impact:new FormControl(),
-				applicability:new FormControl(false)
+				applicability:new FormControl(true)
 
 			}),
 			'3': new FormGroup({
@@ -63,70 +49,70 @@ export class RiskqnaComponent implements OnInit {
 				description: new FormControl(),
 				risk: new FormControl(),
 				impact:new FormControl(),
-				applicability:new FormControl()
+				applicability:new FormControl(true)
 
 			}),
 			'5': new FormGroup({
 				description: new FormControl(),
 				risk: new FormControl(),
 				impact:new FormControl(),
-				applicability:new FormControl()
+				applicability:new FormControl(true)
 
 			}),
 			'6': new FormGroup({
 				description: new FormControl(),
 				risk: new FormControl(),
 				impact:new FormControl(),
-				applicability:new FormControl()
+				applicability:new FormControl(true)
 
 			}),
 			'7': new FormGroup({
 				description: new FormControl(),
 				risk: new FormControl(),
 				impact:new FormControl(),
-				applicability:new FormControl()
+				applicability:new FormControl(true)
 
 			}),
 			'8': new FormGroup({
 				description: new FormControl(),
 				risk: new FormControl(),
 				impact:new FormControl(),
-				applicability:new FormControl()
+				applicability:new FormControl(true)
 
 			}),
 			'9': new FormGroup({
 				description: new FormControl(),
 				risk: new FormControl(),
 				impact:new FormControl(),
-				applicability:new FormControl()
+				applicability:new FormControl(true)
 
 			}),
 			'10': new FormGroup({
 				description: new FormControl(),
 				risk: new FormControl(),
 				impact:new FormControl(),
-				applicability:new FormControl()
+				applicability:new FormControl(true)
 
 			}),
 			'11': new FormGroup({
 				description: new FormControl(),
 				risk: new FormControl(),
 				impact:new FormControl(),
-				applicability:new FormControl()
+				applicability:new FormControl(true)
 
 			}),
 			'12': new FormGroup({
 				description: new FormControl(),
 				risk: new FormControl(),
 				impact:new FormControl(),
-				applicability:new FormControl()
+				applicability:new FormControl(true)
 
 			}),
 			'13': new FormGroup({
 				description: new FormControl(),
 				risk: new FormControl(),
 				impact:new FormControl(),
-				applicability:new FormControl()
+				applicability:new FormControl(true)
 
 			})
 		});
@@ -136,25 +122,25 @@ export class RiskqnaComponent implements OnInit {
 	}
 
 	onSubmit() {
+		
+		let questionArray=[];
 
-   //  	this.q = {
-   //  		id: '001',
-			// applicability: 1,
-			// risk: 'very high risk';
-			// impact: 10;
-			// description: 'Hey this is a test';
-   //  	}
-    	this.http.post('http://localhost:8080/submit',this.questionForm.getRawValue()).subscribe(res=>{console.log(res)},err=>{console.log(err)})
-    	// console.log(this.questionForm.getRawValue());
+    	for (var i = 2; i < QUESTIONS.length+2; i++) {
 
-    	// for (var i = 2; i < QUESTIONS.length+2; i++) {
-    	// 	console.log(i,this.questionForm.getRawValue()[i])
-    	// }
+    		let qobj:Question;
+    		qobj =this.questionForm.getRawValue()[i];
+    		qobj.id = i.toString();
 
+    		questionArray.push(qobj);
 
+    		if (questionArray.length == QUESTIONS.length) {
+    			this.postData(JSON.stringify(questionArray))
+    		}
+    	}
   	}
 
-
-	
-
+  	postData(data:String){
+  		this.http.post(this.BASE_URL.concat('/submit'),data).subscribe(res=>{alert(res)});
+  	}
+  	
 }
